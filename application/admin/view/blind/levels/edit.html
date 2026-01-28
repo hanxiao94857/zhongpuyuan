@@ -1,0 +1,60 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Template_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-template_id" data-rule="required" class="form-control" name="row[template_id]" type="number" value="{$row.template_id|default=''}" placeholder="请输入模板ID" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_number" data-rule="required" class="form-control" name="row[level_number]" type="number" value="{$row.level_number|default=''}" placeholder="级别编号，如1,2,3...">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Small_blind')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-small_blind" data-rule="required" class="form-control" name="row[small_blind]" type="number" step="1" min="0" value="{$row.small_blind|default=''}" placeholder="小盲注金额（整数）">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Big_blind')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-big_blind" data-rule="required" class="form-control" name="row[big_blind]" type="number" step="1" min="0" value="{$row.big_blind|default=''}" placeholder="大盲注金额（整数）">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ante')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ante" class="form-control" name="row[ante]" type="number" step="1" min="0" value="{$row.ante|default='0'}" placeholder="前注金额，0表示无前注（整数）">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Duration')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-duration" data-rule="required" class="form-control" name="row[duration]" type="number" value="{$row.duration|default=''}" placeholder="持续时间(分钟)">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Break_after')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+                <label for="row[break_after]-0"><input id="row[break_after]-0" name="row[break_after]" type="radio" value="0" {in name="0" value="$row.break_after"}checked{/in} /> {:__('No')}</label>
+                <label for="row[break_after]-1"><input id="row[break_after]-1" name="row[break_after]" type="radio" value="1" {in name="1" value="$row.break_after"}checked{/in} /> {:__('Yes')}</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Break_duration')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-break_duration" class="form-control" name="row[break_duration]" type="number" value="{$row.break_duration|default='0'}" placeholder="休息时间(分钟)">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

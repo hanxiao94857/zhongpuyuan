@@ -1,0 +1,35 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        {if isset($need_template_select) && $need_template_select}
+        <div class="alert alert-info">
+            <p>请从盲注模板管理页面选择一个模板，然后点击"级别管理"按钮来管理该模板的级别。</p>
+            <p><a href="{:url('blind/templates/index')}" class="btn btn-primary">返回模板管理</a></p>
+        </div>
+        {else}
+        <div class="alert alert-info">
+            <p>当前正在管理模板ID: <strong>{$template_id}</strong> 的级别数据</p>
+            <p><a href="{:url('blind/templates/index')}" class="btn btn-default btn-sm">返回模板管理</a></p>
+        </div>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" class="btn btn-success btn-add {:$auth->check('blind/levels/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                        <a href="javascript:;" class="btn btn-success btn-edit btn-disabled disabled {:$auth->check('blind/levels/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('blind/levels/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('blind/levels/edit')}"
+                           data-operate-del="{:$auth->check('blind/levels/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+</div>
