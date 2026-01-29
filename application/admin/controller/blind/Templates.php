@@ -13,6 +13,18 @@ class Templates extends Backend
 {
 
     /**
+     * 无需登录的方法,同时也就不需要鉴权了
+     * @var array
+     */
+    protected $noNeedLogin = [];
+
+    /**
+     * 无需鉴权的方法,但需要登录
+     * @var array
+     */
+    protected $noNeedRight = ['selectpage'];
+
+    /**
      * Templates模型对象
      * @var \app\admin\model\blind\Templates
      */
@@ -32,6 +44,16 @@ class Templates extends Backend
      * 因此在当前控制器中可不用编写增删改查的代码,除非需要自己控制这部分逻辑
      * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
      */
+
+    /**
+     * Selectpage搜索
+     *
+     * @internal
+     */
+    public function selectpage()
+    {
+        return parent::selectpage();
+    }
 
 
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\admin\validate\blind;
+namespace app\admin\validate;
 
 use think\Validate;
 
-class Templates extends Validate
+class Coupons extends Validate
 {
     /**
      * 验证规则

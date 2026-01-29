@@ -1,0 +1,138 @@
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        <h3 class="panel-title">比赛详情 - {$row.name}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-right" style="width: 150px;"><strong>比赛名称:</strong></td>
+                            <td>{$row.name}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>比赛类型:</strong></td>
+                            <td>{$row.tournament_type_text}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>盲注模板:</strong></td>
+                            <td>{$blindTemplate.name ?? '无'}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>报名类型:</strong></td>
+                            <td>{$row.buy_in_type_text}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>报名积分:</strong></td>
+                            <td>{$row.buy_in_points}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>报名卡券:</strong></td>
+                            <td>{$coupon.name ?? '无'}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>初始筹码:</strong></td>
+                            <td>{$row.initial_chips}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>最大玩家数:</strong></td>
+                            <td>{$row.max_players ?: '无限制'}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-right" style="width: 150px;"><strong>最小玩家数:</strong></td>
+                            <td>{$row.min_players}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>开始时间:</strong></td>
+                            <td>{$row.start_time}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>迟到报名截止:</strong></td>
+                            <td>{$row.late_registration_time ?: '不允许迟到报名'}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>预计时长:</strong></td>
+                            <td>{$row.estimated_duration} 分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>比赛状态:</strong></td>
+                            <td>
+                                <span class="label label-{$row.tournament_status == 'upcoming' ? 'info' : ($row.tournament_status == 'running' ? 'success' : ($row.tournament_status == 'completed' ? 'primary' : 'default'))}">
+                                    {$row.tournament_status_text}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>报名状态:</strong></td>
+                            <td>
+                                <span class="label label-{$row.registration_status == 'open' ? 'success' : ($row.registration_status == 'late_open' ? 'warning' : 'default')}">
+                                    {$row.registration_status_text}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>当前玩家数:</strong></td>
+                            <td>{$row.current_players}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>当前桌子数:</strong></td>
+                            <td>{$row.current_tables}</td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+        </div>
+
+        {if $row.description}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">比赛描述</h3>
+        </div>
+                    <div class="panel-body">
+                        {$row.description|nl2br}
+        </div>
+        </div>
+    </div>
+        </div>
+        {/if}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">其他信息</h3>
+    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>当前盲注级别:</strong> {$row.current_level}</p>
+                                <p><strong>自动平衡:</strong> {$row.auto_balance ? '是' : '否'}</p>
+        </div>
+                            <div class="col-md-6">
+                                <p><strong>创建时间:</strong> {$row.created_at}</p>
+                                <p><strong>更新时间:</strong> {$row.updated_at}</p>
+        </div>
+    </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="button" class="btn btn-default" onclick="history.back()">返回</button>
+            </div>
+        </div>
+        </div>
+    </div>

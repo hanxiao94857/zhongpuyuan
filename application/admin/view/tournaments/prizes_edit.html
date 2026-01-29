@@ -1,0 +1,75 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="" data-jsname="tournaments/prizes-edit">
+    {:token()}
+    <input type="hidden" name="row[id]" value="{$row.id|htmlentities}" />
+    <input type="hidden" name="tournament_id" value="{$tournament_id}" />
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" for="c-position">{:__('Position')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <span class="input-group-addon">第</span>
+                <input id="c-position" type="number" class="form-control" name="row[position]" value="{$row.position|htmlentities}" required min="1" />
+                <span class="input-group-addon">名</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" for="c-reward_type">{:__('Reward_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-reward_type" class="form-control" name="row[reward_type]" required>
+                <option value="points_only" {if $row.reward_type == 'points_only'}selected{/if}>{:__('仅积分')}</option>
+                <option value="coupon_only" {if $row.reward_type == 'coupon_only'}selected{/if}>{:__('仅卡券')}</option>
+                <option value="points_and_coupon" {if $row.reward_type == 'points_and_coupon'}selected{/if}>{:__('积分+卡券')}</option>
+                <option value="none" {if $row.reward_type == 'none'}selected{/if}>{:__('无奖励')}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group points-group">
+        <label class="control-label col-xs-12 col-sm-2" for="c-points_reward">{:__('Points_reward')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-points_reward" type="number" class="form-control" name="row[points_reward]" value="{$row.points_reward|htmlentities}" min="0" />
+                <span class="input-group-addon"><i class="fa fa-coins"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group coupon-group" style="display:none;">
+        <label class="control-label col-xs-12 col-sm-2" for="c-coupon_id">{:__('Coupon')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-coupon_id" class="form-control" name="row[coupon_id]">
+                <option value="">请选择卡券</option>
+                {foreach $coupons as $id => $name}
+                <option value="{$id}" {if $row.coupon_id == $id}selected{/if}>{$name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" for="c-min_players">{:__('Min_players')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-min_players" type="number" class="form-control" name="row[min_players]" value="{$row.min_players|htmlentities}" min="0" />
+                <span class="input-group-addon">人</span>
+            </div>
+            <span class="help-block">只有当比赛达到此玩家数时才发放该奖励，0表示无要求</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2" for="c-description">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-description" class="form-control" name="row[description]" rows="3" placeholder="例如：冠军奖励、亚军奖励等">{$row.description|htmlentities}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
